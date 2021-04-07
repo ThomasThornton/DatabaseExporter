@@ -1,0 +1,76 @@
+﻿<Window x:Class="Database_Exporter.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Title="Database Exporter" Height="600" Width="1000" Background="MidnightBlue" WindowStartupLocation="CenterScreen" AllowDrop="True" DragEnter="dragenter" DragLeave="dragleave">
+    <Grid>
+        <Grid Name="dragdrop_grid" AllowDrop="True" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="MidnightBlue" Panel.ZIndex="1" Opacity="0" Visibility="Hidden" Drop="dragdrop">
+            <Ellipse Height="150" Width="300" Stroke="LightSteelBlue" StrokeThickness="2" StrokeDashArray="2,3,2,3" />
+            <Label Content="Drop" Foreground="LightSteelBlue" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="50" />
+        </Grid>
+        <Label Content="Eksportér" HorizontalAlignment="Center" VerticalAlignment="Top" Foreground="LightSteelBlue" FontSize="16" />
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,3,10,0">
+            <Label Content="Ass. nr." Foreground="LightSteelBlue" FontSize="14" />
+            <TextBox Name="assnr" Height="23" Width="60" Background="MidnightBlue" Foreground="LightSteelBlue" BorderBrush="LightSteelBlue" FontSize="14"/>
+            <Label Content="Kosternr." Foreground="LightSteelBlue" FontSize="14" />
+            <TextBox Name="kosternr" Height="23" Width="50" Background="MidnightBlue" Foreground="LightSteelBlue" BorderBrush="LightSteelBlue" FontSize="14"/>
+        </StackPanel>
+        <Grid VerticalAlignment="Top" Margin="0,35,0,0" Height="2" Background="LightSteelBlue" Opacity="0.5" />
+        <Button Content="Åbn" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,62,140,0" FontSize="18" Width="60" BorderBrush="LightSteelBlue" Foreground="LightSteelBlue" Background="MidnightBlue" Click="open_click" />
+        <Label Content="eller" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,60,10,0" Foreground="LightSteelBlue" Background="MidnightBlue" FontSize="14" />
+        <Grid HorizontalAlignment="Center" VerticalAlignment="Top" Margin="150,50,0,0">
+            <Ellipse Height="50" Width="100" Stroke="LightSteelBlue" StrokeThickness="2" StrokeDashArray="2,3,2,3" />
+            <Label Content="Drop" Foreground="LightSteelBlue" HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="18" />
+        </Grid>
+        <Label Name="choose" Margin="0,120,0,0" Foreground="#FFDDEE00" Background="MidnightBlue" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="16" BorderThickness="0" />
+        <StackPanel Name="stackpanel_buttons" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,170,0,0" Height="22" />
+        <StackPanel Name="stackpanel_export" Orientation="Vertical" Background="MidnightBlue" HorizontalAlignment="Center" VerticalAlignment="Center" Width="800" Margin="0,-100,0,0">
+            <Label Name="notify" HorizontalContentAlignment="Center" Foreground="LightSteelBlue" FontSize="16" />
+            <TextBox Name="path" TextWrapping="Wrap" TextAlignment="Center" Foreground="#FFDDEE00" Background="MidnightBlue" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16" BorderThickness="0" />
+        </StackPanel>
+        <StackPanel Name="stackpanel_query" Orientation="Vertical" Background="MidnightBlue" HorizontalAlignment="Center" VerticalAlignment="Center" Width="800" Margin="0,200,0,0" Visibility="Hidden">
+            <Label Name="sql" Content="SQL query:" Width="85" Foreground="LightSteelBlue" FontSize="16" />
+            <TextBox Name="query" TextWrapping="Wrap" TextAlignment="Center" Foreground="#FFDDEE00" Background="MidnightBlue" FontSize="16" BorderThickness="0" />
+            <Button Name="clipboard" Content="Kopiér til Clipboard" Margin="0,30,0,0" Width="160" Foreground="LightSteelBlue" Background="MidnightBlue" BorderBrush="LightSteelBlue" FontSize="16" Click="clipboard_click" />
+        </StackPanel>
+        <Label Name="supported" Content="°°°" HorizontalAlignment="Left" VerticalAlignment="Top" HorizontalContentAlignment="Center" Margin="5,3,0,0" Height="32" Foreground="LightSteelBlue" Background="Transparent" FontSize="20" Opacity="0.5" MouseEnter="supported_mouseenter" MouseLeave="supported_mouseleave" />
+        <RichTextBox Name="supported_text" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="5,40,0,0" Height="0" Width="170" Background="MidnightBlue" BorderThickness="0" Opacity="0">
+            <FlowDocument>
+                <Paragraph TextAlignment="Left" Foreground="DeepSkyBlue" FontWeight="Bold" Margin="0">Understøttede databaser</Paragraph>
+                
+                <Paragraph TextAlignment="Left" Foreground="CornflowerBlue" FontWeight="Bold" Margin="0">Chrome</Paragraph>
+                <Paragraph TextAlignment="Left" Foreground="LightSteelBlue" TextIndent="20" Margin="0">History</Paragraph>
+                <Paragraph TextAlignment="Left" Foreground="LightBlue" TextIndent="40" Margin="0">Webhistorik</Paragraph>
+                <Paragraph TextAlignment="Left" Foreground="LightBlue" TextIndent="40" Margin="0">Downloads</Paragraph>
+                <Paragraph TextAlignment="Left" Foreground="LightSteelBlue" TextIndent="20" Margin="0">Web Data</Paragraph>
+                <Paragraph TextAlignment="Left" Foreground="LightBlue" TextIndent="40" Margin="0">Autofyldhistorik</Paragraph>
+                <Paragraph TextAlignment="Left" Foreground="LightBlue" TextIndent="40" Margin="0">Autofyldprofiler</Paragraph>
+                <Paragraph TextAlignment="Left" Foreground="LightSteelBlue" TextIndent="20" Margin="0">Login Data</Paragraph>
+                <Paragraph TextAlignment="Left" Foreground="LightBlue" TextIndent="40" Margin="0">Logins</Paragraph>
+                <Paragraph TextAlignment="Left" Foreground="LightSteelBlue" TextIndent="20" Margin="0">Shortcuts</Paragraph>
+                <Paragraph TextAlignment="Left" Foreground="LightBlue" TextIndent="40" Margin="0">Shortcuts</Paragraph>
+                <Paragraph TextAlignment="Left" Foreground="LightSteelBlue" TextIndent="20" Margin="0">SyncData.sqlite3</Paragraph>
+                <Paragraph TextAlignment="Left" Foreground="LightBlue" TextIndent="40" Margin="0">Synchistorik</Paragraph>
+
+                <Paragraph TextAlignment="Left" Foreground="CornflowerBlue" FontWeight="Bold" Margin="0">Firefox</Paragraph>
+                <Paragraph TextAlignment="Left" Foreground="LightSteelBlue" TextIndent="20" Margin="0">places.sqlite</Paragraph>
+                <Paragraph TextAlignment="Left" Foreground="LightBlue" TextIndent="40" Margin="0">Webhistorik</Paragraph>
+                <Paragraph TextAlignment="Left" Foreground="LightBlue" TextIndent="40" Margin="0">Downloads</Paragraph>
+                <Paragraph TextAlignment="Left" Foreground="LightBlue" TextIndent="40" Margin="0">Bookmarks</Paragraph>
+                <Paragraph TextAlignment="Left" Foreground="LightSteelBlue" TextIndent="20" Margin="0">formhistory.sqlite</Paragraph>
+                <Paragraph TextAlignment="Left" Foreground="LightBlue" TextIndent="40" Margin="0">Formhistorik</Paragraph>
+
+                <Paragraph TextAlignment="Left" Foreground="CornflowerBlue" FontWeight="Bold" Margin="0">Skype (ny)</Paragraph>
+                <Paragraph TextAlignment="Left" Foreground="LightSteelBlue" TextIndent="20" Margin="0">s4l-*.db</Paragraph>
+                <Paragraph TextAlignment="Left" Foreground="LightBlue" TextIndent="40" Margin="0">Beskeder</Paragraph>
+
+                <Paragraph TextAlignment="Left" Foreground="CornflowerBlue" FontWeight="Bold" Margin="0">Skype (tidligere)</Paragraph>
+                <Paragraph TextAlignment="Left" Foreground="LightSteelBlue" TextIndent="20" Margin="0">main.db</Paragraph>
+                <Paragraph TextAlignment="Left" Foreground="LightBlue" TextIndent="40" Margin="0">Beskeder</Paragraph>
+                <Paragraph TextAlignment="Left" Foreground="LightBlue" TextIndent="40" Margin="0">Konti</Paragraph>
+            </FlowDocument>
+        </RichTextBox>
+    </Grid>
+</Window>
